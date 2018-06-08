@@ -1,0 +1,119 @@
+Basics of JS:
+
+Jsforcats.com -- Website
+Eloquent JS -- Good book
+The Good Parts
+
+http://getify.me 
+http://speakerdeck.com/getify
+
+[(a) = [(b) * [(2) + (foo(((c) * (3))))]]];
+
+LEFT to RIGHT -- > Operator evaluation
+
+JS language is a scripting language and its not interpretive.
+
+JS is a compiled language.
+
+Ways to output :
+
+alert --> Basically given by browser
+Console.log() --> By JS
+
+Ways to input :
+
+Prompt() 
+
+Values and Types:
+No diff between single quotes and double quotes in JS.
+console.log() --> Prints out what ever it has.
+alert() --> changes it to a string
+
+IN JS --> Conversion is called as Coercion.
+
+Coercion :
+	-- Explicit
+	-- Implicit
+
+a = String(a) ==> Converts to string
+b = Number(b) ==> Converts to number.
+
+In JS the value has a type and the variable does not have a type. 
+
+What is the subtle difference b/w values and variables in JS and other static languages like C#?
+ -- In JS values have a type but in other static languages variable has a typ which means that we are telling that a particular variable can hold only some particular type.
+ 
+Implicit Coercion:
+
+a =2;
+a= a + "";
+console.log(a)
+Here a is implicitly converted to string. This is implicit coercion.
+
+** Code comments --> For developers understanding.
+
+Comments should never say what. It should only say Why or How...
+
+Variables and Blocks:
+var, let, const, function -- Ways to declare varables
+
+Block is a collection of statements within parenthesis.
+
+Blocks can be attached with if, while, for and also function statements.
+Where ever the block is attached, it is executed in the context of that.
+
+Conversion to bool values:
+
+FALSY Values :
+0, 
+-0, 
+NaN, 
+"", 
+false, 
+null
+undefined
+
+Anything other than the above value is a true.
+
+What is the result of this below??
+
+var a = 0;
+if(a)
+{
+	console.log('hi');
+}
+else{
+	Console.log('bye');
+	} 
+// Answer is bye
+
+*******
+LOOPS
+*********
+For loop :
+
+1.	for(a=5; a < 10; a++)
+
+	a=5 --> Initialization expression
+	a<10 --> Conditional expression
+	a++ --> Updation expression
+	All the three in a for loop are optional.
+
+-- A loop runs until something is false.
+
+************
+Function
+*************
+
+-- Function is kind of like a block and which can be called multiple times. Its not like a loop.
+.toFixed() --> Method on a number type which returns a string.
+
+-- passing a function and passing the result of a function call.
+
+******
+ES6
+******
+
+Tool called bable -- Transpiler to convert ES6 code to old ES5 code.
+
+es6fiddle.net

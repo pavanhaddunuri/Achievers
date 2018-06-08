@@ -1,0 +1,178 @@
+Advanced JS : 
+
+-- High performance JS
+-- JS Patterns
+-- developer mozilla Javascript docs
+-- Idiomatic JS
+
+
+***********
+SCOPE
+***********
+Scope ---> Where to look for things??
+What are we looking for --> Variables...
+
+Who's doing the looking --> 
+
+JS is a compiled laguage --> Diff b/w JS compilation and other lang like C# is we dont emit the output of the compilation and JS is compiled everytime it is run.
+
+Compiled Language --> Compiler does an initial pass through.
+
+JS has function scope only*
+
+Compilation :
+
+1. var foo = "bar";
+	
+	var foo -- 1st statement
+	foo = "bar" -- 2nd statement
+	
+	1 and 2 happen at different times.
+	
+-- Compiler pass through 1st time and identifies all the declarations.
+
+When not in strict mode... global scope will create a reference for it if it is not found in any scope.
+
+Declared --> var or function
+Undefined and Undeclared --> 
+	Undefined --> variable is declared but value is not initialized.
+
+	Anything which is not a LHS reference is a RHS reference.
+	
+	A RHS reference found if not found in global scope throws an exception.
+
+******************************************
+Diff b/w Function Declaration and Function Expression
+*******************************************
+
+'function' keyword in the first word of the statement --> Function declaration.
+
+var foo = function bar(){} ---> Function expression --> Not the first keyword.
+
+Most of the function expression are anonymous functions.
+In function expressions, the function can be referenced in itself because it is not declared in the global scope.
+
+Anonymous function negatives :
+
+1. We cant refere the function inside the function with out a name.
+2. Its visible in the stacktrace as a name and easily.
+3. Makes the code more understandable.
+
+err in catch block is block scoped and its accessible inside that catch block.
+
+try{}
+catch(err){
+	console.log(err);
+}
+
+Two types of Scope :
+
+1. Lexical scope
+2. Dynamic scope
+
+Lexical scope means compile time scoping.
+
+****************************************
+CHEATING LEXICAL SCOPE
+****************************************
+var bar = "bar";
+
+function foo(str){
+	eval(str);
+	console.log(bar); // 42
+}
+
+foo("var bar = 42;");
+
+Code run slower by using the eval keyword.
+
+IIFE pattern : (Immediately invoked function expression)
+
+The main advantage of IIFE is it creates a separate function scope.
+
+var foo = "foo";
+
+(function(){
+	var foo = "foo2";
+	console.log(foo); //foo2
+	})();
+	
+console.log(foo); // foo
+
+***************************
+LET KEYWORD -- BLOCK SCOPE
+****************************
+
+Difference b/w let and var??
+let attaches the variable to whatever the block it appearss in whereas the var keyword attaches it to the function.
+Let is a block scoping and var is a function scoping.
+
+*********************
+Dynamic scoping
+*********************
+
+The decision for how scoping works in dynamic scoping is a run time decision where as the lexical is a author time decision.
+
+Diff b/w undefined and undeclared?
+Undefined --> doesnt currently have a value. It means it has been declared back.
+What are the diff ways you can create a new scope?
+
+
+*********************
+Hoisting
+*******************
+
+Declarations are moved to top of the code. It simply means the first compiler goes through all of the code and checks for any declarations. This virtually means the declarations are moved to the top.
+
+Function expressions will not be hoisted but function declarations gets hoisted.
+
+Functions are hoisted before variables.
+
+let dont hoist.
+
+********************
+this keyword
+*********************
+this --> call site.
+Four rules to determine 'this' keyword :
+
+-- Go to the call site and ask the four rules.
+1. Function stands alone all by itself...default binding rule applies...IFFE case also same applies --> If you are in strict made, this keyword is undefined and if it is not strict mode, this refers to global object.
+2. Implicit binding rule --> in JS everything is a reference to an object. The callsite at the object becomes the this keyword.
+3. Explicit Binding ==> .call or .apply is used --> 
+	foo.call(obj) ==> obj becomes this
+4. Hard binding ==>  
+
+********************
+new keyword
+********************
+1. new keyword infront of any function call ==> constructor call
+Four things happen when new 
+
+1. Brand new object is created.
+*2. Object gets linked to a different object.
+3. brand new object binds to this keyword
+4. function retun the new object
+
+***This
+1. Was the function called with new keyword --> this is the new object
+2. Was the function called with 'call' or 'apply' specifying an explicit this --> use that object
+3. Was it an implicit binding --> use that object
+4. DEFAULT : global object(excpet strict mode)
+
+
+**************************************************
+Immediately Invoked Function Expression ( IIFE )
+**************************************************
+
+var a = 3;
+
+(
+	function foo()
+	{
+		var a = 2;
+		console.log(a);
+	}
+)(); -- This invokes the function immediately.
+
+console.log(a);
